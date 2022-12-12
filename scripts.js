@@ -6,15 +6,35 @@ function getComputerChoice(){
     switch (option) {
         case 0:
             return 'Piedra';
-            break;
         case 1:
             return 'Papel';
-            break;
         case 2:
             return 'Tijera';
-            break;
         default:
             break;
     }
 }
-console.log(getComputerChoice());
+const playerSelection = 'Piedra';
+const computerSelection = getComputerChoice();
+function gameRockScissors(playerSelection,computerSelection){
+    let player = playerSelection.toLowerCase();
+    let computer = computerSelection.toLowerCase();
+    if (player === 'piedra' && computer === 'tijera'){
+        return `You Win!! ${player} beats ${computer}`;
+    }
+    if (player === 'papel' && computer === 'piedra'){
+        return `You Win! ${player} beats ${computer}`;
+    }
+    if (player === 'tijera' && computer === 'papel'){
+        return `You Win!! ${player} beats ${computer}`;
+    }
+    if (player === computer){
+        return `${player} and ${computer}`;
+    }
+    else{
+        return `You Lose ${computer} beats ${player}`;
+    }
+}
+console.log(gameRockScissors(playerSelection,computerSelection));
+
+
