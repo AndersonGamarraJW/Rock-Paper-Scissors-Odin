@@ -36,21 +36,22 @@ function gameRockScissors(playerSelection,computerSelection){
     else{
         return `You Lose ${computer} beats ${player}`;
     }
+    
 }
-function game(){
-    let playerSelection;
-    let computerSelection;
-    for (let i = 0;i<5;i++){
-        computerSelection = getComputerChoice();
-        playerSelection = prompt('Introduce tu opción');
-        console.log(gameRockScissors(playerSelection,computerSelection));
-    }
-    if (playerPoints>=3){
-        console.log(`Player win with ${playerPoints} points`);
-    }
-    else{
-        console.log(`Player lose with ${playerPoints} points`);
+function game(e){
+    const computerSelection = getComputerChoice();
+    const playerSelection = this.textContent;
+    const result = document.querySelector('.result').textContent = gameRockScissors(playerSelection,computerSelection);
+    const puntaje = document.querySelector('.points-result').textContent = playerPoints.toString();
+    alertWin(); 
+    
+}
+function alertWin(){
+    if(playerPoints === 5){
+        alert('GANASTE');
     }
 }
-game();
+
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => button.addEventListener('click',game));
 
